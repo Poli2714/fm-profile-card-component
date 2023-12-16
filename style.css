@@ -1,7 +1,116 @@
+:root {
+  --clr-primary--1: hsl(185, 75%, 39%); /* Dark cyan */
+  --clr-primary--2: hsl(229, 23%, 23%); /* Very dark desaturated blue */
+  --clr-primary--3: hsl(227, 10%, 46%); /* Dark grayish blue */
+  --clr-neutral: hsl(0, 0%, 59%, 0.3); /* Drak gray */
+
+  --width-img: 105px;
+  --height-img: 105px;
+
+  --font-main: 18px;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+html {
+  color: var(--clr-primary--2);
+  font-family: 'Kumbh Sans', sans-serif;
+  font-size: var(--font-main);
+}
+
+body {
+  background: top -35vw left -22vw no-repeat url('./images/bg-pattern-top.svg'),
+    bottom -45vw right -15vw no-repeat url('./images/bg-pattern-bottom.svg'),
+    var(--clr-primary--1);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.profile-card {
+  background-color: white;
+  border-radius: 20px;
+  height: max(400px, 25vw);
+  overflow: hidden;
+  width: clamp(330px, 40%, 350px);
+}
+
+.upper-section {
+  background: url(./images/bg-pattern-card.svg);
+  height: 33%;
+  width: 100%;
+}
+
+.below-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  position: relative;
+  text-align: center;
+
+  .profile-picture {
+    --width-img-border: 3px;
+
+    border: var(--width-img-border) solid white;
+    border-radius: 50%;
+    position: absolute;
+    top: calc(0px - (var(--width-img) / 2));
+    left: calc(50% - ((var(--width-img) / 2)));
+
+    + div {
+      margin: 3.5rem 0 1.75rem;
+    }
+  }
+
+  & h1 {
+    font-size: clamp(1em, 5vw, 1.25em);
+    margin: 0.75ex 0;
+  }
+}
+
+span {
+  &.age {
+    color: var(--clr-primary--3);
+    font-weight: 400;
+  }
+
+  &.description {
+    color: var(--clr-primary--3);
+    font-size: 0.7em;
+    letter-spacing: 0.3ex;
+  }
+
+  &:not(.description, .age) {
+    font-weight: 700;
+  }
+}
+
+.stats {
+  border-top: 1px solid var(--clr-neutral);
+
+  display: flex;
+  justify-content: center;
+  gap: 2.25rem;
+
+  padding: 1.5rem 0;
+}
+
+.data {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .attribution {
